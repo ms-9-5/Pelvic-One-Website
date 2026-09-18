@@ -1,10 +1,10 @@
 # uploads/
 
-Hier liegen alle Bilder der Landing Page. Die `index.html` referenziert sie direkt über `./uploads/<dateiname>` – die Dateinamen müssen daher **exakt** wie unten aufgeführt sein (Groß-/Kleinschreibung beachten).
+Hier liegen alle Bilder der Landing Page. Die `index.html` referenziert sie direkt über `./uploads/<dateiname>` – die Dateinamen müssen daher **exakt** wie unten aufgeführt sein (Groß-/Kleinschreibung beachten, keine Leerzeichen).
 
 Einfach die passende Bilddatei per Drag & Drop in diesen Ordner ziehen, denselben Dateinamen verwenden, committen & pushen – das Bild erscheint automatisch an der richtigen Stelle auf pelvic-one.de.
 
-## Benötigte Dateien
+## Aktuell verwendete Dateien
 
 | Dateiname | Verwendung auf der Seite |
 |---|---|
@@ -17,11 +17,11 @@ Einfach die passende Bilddatei per Drag & Drop in diesen Ordner ziehen, denselbe
 | `pelvic-one-10.jpg` | Technologie-Section – Hintergrundbild |
 | `pelvic-one-13.jpg` | Galerie – großes Hauptbild links |
 | `pelvic-one-15.jpg` | Galerie – Bild unten rechts |
-| `anwendung-1.jpg` | Zielgruppen – Analinkontinenz |
-| `anwendung-2.jpg` | Zielgruppen – Postpartum / Rückbildung |
-| `anwendung-4.jpg` | Zielgruppen – Harninkontinenz (Frauen 40+) |
-| `anwendung-5.jpg` | Zielgruppen – Männergesundheit |
-| `anwendung-6.jpg` | Zielgruppen – Prävention / Aktive |
+| `zielgruppe-postpartum.jpg` | Zielgruppen – Postpartum / Rückbildung |
+| `zielgruppe-frau-40plus.jpg` | Zielgruppen – Harninkontinenz (Frauen 40+) |
+| `zielgruppe-allgemein.jpg` | Zielgruppen – Analinkontinenz / Schließmuskel |
+| `zielgruppe-mann.jpg` | Zielgruppen – Männergesundheit |
+| `zielgruppe-aktiv.jpg` | Zielgruppen – Prävention / Aktive |
 | `foto-siegfried.jpg` | Über uns – Portrait Siegfried W. |
 
-Sobald weitere Bilder (z. B. neue Zielgruppen-Motive) eingebaut werden sollen, einfach hochladen und Bescheid geben – die entsprechenden `<img>`-Tags in der `index.html` werden dann ergänzt.
+**Wichtig:** Wenn du eine bestehende Datei ersetzen willst, lade die neue Datei mit demselben Dateinamen hoch (GitHub fragt dann, ob die alte überschrieben werden soll). Ein neuer, abweichender Dateiname wird nicht automatisch übernommen – dafür muss die `index.html` entsprechend angepasst werden.
