@@ -479,7 +479,6 @@
         <div><div style="font-family:'Schibsted Grotesk',sans-serif;font-weight:800;font-size:28px;color:#fff;">100%</div><div style="font-size:13px;color:#b0a99e;">Ihr Umsatz, kein Franchise</div></div>
       </div>
     </div>
-    </div>
   </div>
 </section>
 
@@ -903,7 +902,12 @@
 
   document.getElementById('contact-form').addEventListener('submit', function(e) {
     e.preventDefault();
-    document.getElementById('contact-form').classList.add('hidden');
+    var form = document.getElementById('contact-form');
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    form.classList.add('hidden');
     document.getElementById('form-success').classList.add('visible');
   });
 
