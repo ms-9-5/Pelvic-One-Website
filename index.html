@@ -99,6 +99,12 @@
     .gallery-grid{grid-template-columns:1fr!important;}
     .roi-grid{grid-template-columns:1fr!important;}
   }
+  /* ── CE-Banner responsive: linksbündig statt einzeln zentriert beim Umbruch ── */
+  @media(max-width:700px){
+    .ce-row{flex-direction:column!important;align-items:stretch!important;justify-content:flex-start!important;gap:0!important;}
+    .ce-item{width:100%!important;padding:18px 0!important;}
+    .ce-item+.ce-item{border-top:1px solid rgba(255,255,255,.08);}
+  }
   /* ── Ideal-für responsive (überschreibt die generische Galerie-Regel oben) ── */
   @media(max-width:640px){
     .ideal-box{padding:32px 20px!important;}
@@ -830,16 +836,16 @@
 <section style="padding:0 28px 80px;">
   <div style="max-width:1100px;margin:0 auto;background:#15130F;border-radius:20px;padding:40px;position:relative;overflow:hidden;">
     <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.04) 1px,transparent 1px);background-size:36px 36px;opacity:.6;pointer-events:none;"></div>
-    <div style="position:relative;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:44px;">
-      <div style="display:flex;align-items:center;gap:14px;">
+    <div class="ce-row" style="position:relative;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:44px;">
+      <div class="ce-item" style="display:flex;align-items:center;gap:14px;">
         <div style="width:48px;height:48px;border-radius:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E05949" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
         <div><div style="font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:15px;color:#fff;">CE-Kennzeichnung</div><div style="font-size:12.5px;color:#9a938a;">Konform nach EU-Medizinprodukteverordnung</div></div>
       </div>
-      <div style="display:flex;align-items:center;gap:14px;">
+      <div class="ce-item" style="display:flex;align-items:center;gap:14px;">
         <div style="width:48px;height:48px;border-radius:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E05949" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
         <div><div style="font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:15px;color:#fff;">MDR 2017/745</div><div style="font-size:12.5px;color:#9a938a;">EU Medical Device Regulation</div></div>
       </div>
-      <div style="display:flex;align-items:center;gap:14px;">
+      <div class="ce-item" style="display:flex;align-items:center;gap:14px;">
         <div style="width:48px;height:48px;border-radius:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E05949" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
         <div><div style="font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:15px;color:#fff;">Klasse IIa Medizinprodukt</div><div style="font-size:12.5px;color:#9a938a;">Zertifizierungsunterlagen auf Anfrage</div></div>
       </div>
