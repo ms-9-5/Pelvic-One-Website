@@ -55,6 +55,9 @@
   }
   .nav-hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;}
   .nav-hamburger span{display:block;width:22px;height:2px;background:#1B1916;border-radius:2px;transition:transform .3s,opacity .3s;}
+  .nav-hamburger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .nav-hamburger[aria-expanded="true"] span:nth-child(2){opacity:0;}
+  .nav-hamburger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
   .mobile-menu{display:none;position:fixed;inset:0;top:69px;background:rgba(242,237,230,.98);backdrop-filter:blur(14px);z-index:49;flex-direction:column;align-items:center;justify-content:center;gap:32px;}
   .mobile-menu.open{display:flex;}
   .mobile-menu a{font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:26px;text-decoration:none;color:#1B1916;letter-spacing:-.02em;}
@@ -77,7 +80,7 @@
   .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
   @media(max-width:500px){.field-row{grid-template-columns:1fr;}}
   input,select,button{font-family:inherit;}
-  input:focus,select:focus{outline:2px solid rgba(224,89,73,.4);outline-offset:1px;}
+  input:focus,select:focus{outline:2px solid rgba(224,89,73,.4)!important;outline-offset:1px;}
   .form-success{display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:300px;gap:14px;}
   .form-success.visible{display:flex;}
   .contact-form.hidden{display:none;}
@@ -96,9 +99,6 @@
     .gallery-grid{grid-template-columns:1fr!important;}
     .roi-grid{grid-template-columns:1fr!important;}
   }
-  /* ── Bild Hover ── */
-  .img-hover{transition:transform .5s ease,box-shadow .5s ease;}
-  .img-hover:hover{transform:scale(1.02);box-shadow:0 30px 60px -30px rgba(27,25,22,.5);}
   /* ── Ideal-für responsive (überschreibt die generische Galerie-Regel oben) ── */
   @media(max-width:640px){
     .ideal-box{padding:32px 20px!important;}
@@ -108,7 +108,7 @@
   /* ── Hero- & Über-uns-Bühne ── */
   .hero-badge{z-index:3;}
   @media(max-width:600px){
-    .ueberuns-photo{width:52%!important;max-width:200px!important;}
+    .ueberuns-photo{width:52%!important;max-width:200px!important;height:auto!important;aspect-ratio:300/380!important;}
     .hero-badge{max-width:220px!important;padding:9px 13px!important;gap:9px!important;}
     .hero-badge > span{width:32px!important;height:32px!important;font-size:11px!important;}
     .hero-badge--tl{top:14px!important;left:14px!important;}
@@ -179,7 +179,7 @@
         <div style="position:absolute;left:63%;top:66%;width:260px;height:260px;border-radius:50%;border:1.5px solid rgba(224,89,73,.45);transform:translate(-50%,-50%) scale(.3);animation:emring 4s ease-out infinite;animation-delay:1.3s;"></div>
         <div class="hero-badge hero-badge--tl" style="position:absolute;top:26px;left:26px;display:flex;align-items:center;gap:11px;background:rgba(255,255,255,.92);padding:11px 15px;border-radius:16px;box-shadow:0 14px 34px -18px rgba(27,25,22,.5);animation:floatY 5s ease-in-out infinite;">
           <span style="width:38px;height:38px;border-radius:11px;background:#1B1916;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;font-family:'Schibsted Grotesk',sans-serif;flex-shrink:0;">30′</span>
-          <div style="min-width:0;"><div style="font-size:13px;font-weight:700;">Behandlungszeit</div><div style="font-size:12px;color:#7a746b;">pro Sitzung · bekleidet</div></div>
+          <div style="min-width:0;"><div style="font-size:13px;font-weight:700;">Behandlungszeit</div><div style="font-size:12px;color:#6e685f;">pro Sitzung · bekleidet</div></div>
         </div>
         <div class="hero-badge hero-badge--br" style="position:absolute;bottom:26px;right:26px;background:rgba(27,25,22,.92);color:#fff;padding:14px 18px;border-radius:16px;box-shadow:0 14px 34px -18px rgba(27,25,22,.6);animation:floatY2 5.6s ease-in-out infinite;">
           <div style="font-family:'Schibsted Grotesk',sans-serif;font-weight:800;font-size:22px;">10 Mio.</div>
@@ -248,7 +248,7 @@
         <div style="position:absolute;left:50%;top:50%;width:260px;height:260px;border-radius:50%;border:1.5px solid rgba(224,89,73,.5);transform:translate(-50%,-50%) scale(.3);animation:emring 3.6s ease-out infinite;"></div>
         <div style="position:absolute;left:50%;top:50%;width:260px;height:260px;border-radius:50%;border:1.5px solid rgba(224,89,73,.5);transform:translate(-50%,-50%) scale(.3);animation:emring 3.6s ease-out infinite;animation-delay:1.2s;"></div>
         <div style="position:absolute;left:50%;top:50%;width:260px;height:260px;border-radius:50%;border:1.5px solid rgba(255,255,255,.18);transform:translate(-50%,-50%) scale(.3);animation:emring 3.6s ease-out infinite;animation-delay:2.4s;"></div>
-        <div style="position:absolute;left:50%;top:50%;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle at 40% 35%,rgba(224,89,73,.85),rgba(156,47,34,.85));box-shadow:0 0 60px rgba(224,89,73,.6);display:flex;align-items:center;justify-content:center;transform:translate(-50%,-50%);left:50%;top:50%;position:absolute;">
+        <div style="position:absolute;left:50%;top:50%;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle at 40% 35%,rgba(224,89,73,.85),rgba(156,47,34,.85));box-shadow:0 0 60px rgba(224,89,73,.6);display:flex;align-items:center;justify-content:center;transform:translate(-50%,-50%);">
           <div style="width:60px;height:60px;border-radius:50%;border:2px dashed rgba(255,255,255,.5);animation:spinSlow 14s linear infinite;"></div>
         </div>
         <div style="position:absolute;bottom:22px;left:0;right:0;display:flex;align-items:flex-end;justify-content:center;gap:5px;height:46px;">
@@ -684,7 +684,6 @@
         </div>
       </div>
       <div style="display:flex;flex-wrap:wrap;gap:20px;padding:24px;border-radius:18px;background:#fff;border:1px solid rgba(27,25,22,.08);box-shadow:0 16px 40px -30px rgba(27,25,22,.3);">
-        <!-- Portraitfoto: src="./uploads/foto-siegfried.jpg" eintragen wenn verfügbar -->
         <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#E05949,#bd3a2b);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Schibsted Grotesk',sans-serif;font-weight:800;font-size:18px;color:#fff;">SW</div>
         <div style="flex:1;min-width:180px;">
           <div style="font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:16px;margin-bottom:2px;">Siegfried W.</div>
@@ -709,7 +708,7 @@
       <img src="./uploads/foto-siegfried.jpg" alt="Siegfried W. – Ihr Ansprechpartner" loading="lazy" data-par class="ueberuns-photo" style="position:relative;z-index:2;width:300px;height:380px;object-fit:cover;object-position:center top;border-radius:22px;box-shadow:0 24px 60px -20px rgba(27,25,22,.5);">
       <div class="hero-badge hero-badge--tl" style="position:absolute;top:26px;left:26px;display:flex;align-items:center;gap:11px;background:rgba(255,255,255,.92);padding:11px 15px;border-radius:16px;box-shadow:0 14px 34px -18px rgba(27,25,22,.5);animation:floatY 5.2s ease-in-out infinite;">
         <span style="width:9px;height:9px;border-radius:50%;background:#27a567;box-shadow:0 0 0 4px rgba(39,165,103,.18);flex-shrink:0;"></span>
-        <div style="min-width:0;"><div style="font-size:13px;font-weight:700;">Persönliche Betreuung</div><div style="font-size:12px;color:#7a746b;">vom ersten Kontakt an</div></div>
+        <div style="min-width:0;"><div style="font-size:13px;font-weight:700;">Persönliche Betreuung</div><div style="font-size:12px;color:#6e685f;">vom ersten Kontakt an</div></div>
       </div>
       <div class="hero-badge hero-badge--br" style="position:absolute;bottom:26px;right:26px;background:rgba(27,25,22,.92);color:#fff;padding:13px 17px;border-radius:16px;box-shadow:0 14px 34px -18px rgba(27,25,22,.6);animation:floatY2 5.7s ease-in-out infinite;">
         <div style="font-family:'Schibsted Grotesk',sans-serif;font-weight:800;font-size:16px;">Diskret. Seriös. Direkt.</div>
@@ -904,11 +903,13 @@
       open = !open;
       menu.classList.toggle('open', open);
       btn.setAttribute('aria-expanded', open);
+      btn.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
     });
     window.closeMobileMenu = function() {
       open = false;
       menu.classList.remove('open');
       btn.setAttribute('aria-expanded', false);
+      btn.setAttribute('aria-label', 'Menü öffnen');
     };
   })();
 
