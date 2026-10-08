@@ -34,9 +34,9 @@
   @keyframes navElevate { from{box-shadow:none;background-color:rgba(242,237,230,.72);}to{box-shadow:0 14px 34px -22px rgba(27,25,22,.5);background-color:rgba(242,237,230,.94);}}
   @keyframes parUp    { from{transform:translateY(18px);}to{transform:translateY(-18px);}}
   @supports (animation-timeline: view()) {
-    html[data-rv-on] [data-rv]  { animation:rvUp    linear both;animation-timeline:view();animation-range:entry 3% cover 30%;}
-    html[data-rv-on] [data-rvl] { animation:rvLeft  linear both;animation-timeline:view();animation-range:entry 3% cover 32%;}
-    html[data-rv-on] [data-rvs] { animation:rvScale linear both;animation-timeline:view();animation-range:entry 3% cover 32%;}
+    html[data-rv-on] [data-rv]  { animation:rvUp    linear both;animation-timeline:view();animation-range:entry 3% entry 85%;}
+    html[data-rv-on] [data-rvl] { animation:rvLeft  linear both;animation-timeline:view();animation-range:entry 3% entry 85%;}
+    html[data-rv-on] [data-rvs] { animation:rvScale linear both;animation-timeline:view();animation-range:entry 3% entry 85%;}
   }
   @supports (animation-timeline: scroll()) {
     [data-progress]{animation:rvGrow     linear both;animation-timeline:scroll(root);transform-origin:0 50%;}
