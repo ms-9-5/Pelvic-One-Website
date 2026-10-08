@@ -27,16 +27,16 @@
   @keyframes spinSlow { to{transform:rotate(360deg);}}
   @keyframes driftGrid{ 0%{background-position:0 0;}100%{background-position:46px 46px;}}
   @keyframes waveBar  { 0%,100%{transform:scaleY(.35);}50%{transform:scaleY(1);}}
-  @keyframes rvUp     { from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
-  @keyframes rvLeft   { from{opacity:0;transform:translateX(-28px);}to{opacity:1;transform:translateX(0);}}
-  @keyframes rvScale  { from{opacity:0;transform:scale(.93);}to{opacity:1;transform:scale(1);}}
+  @keyframes rvUp     { from{opacity:0;transform:translateY(44px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes rvLeft   { from{opacity:0;transform:translateX(-44px);}to{opacity:1;transform:translateX(0);}}
+  @keyframes rvScale  { from{opacity:0;transform:scale(.88);}to{opacity:1;transform:scale(1);}}
   @keyframes rvGrow   { from{transform:scaleX(0);}to{transform:scaleX(1);}}
   @keyframes navElevate { from{box-shadow:none;background-color:rgba(242,237,230,.72);}to{box-shadow:0 14px 34px -22px rgba(27,25,22,.5);background-color:rgba(242,237,230,.94);}}
   @keyframes parUp    { from{transform:translateY(18px);}to{transform:translateY(-18px);}}
   @supports (animation-timeline: view()) {
-    html[data-rv-on] [data-rv]  { animation:rvUp    linear both;animation-timeline:view();animation-range:entry 3% entry 85%;}
-    html[data-rv-on] [data-rvl] { animation:rvLeft  linear both;animation-timeline:view();animation-range:entry 3% entry 85%;}
-    html[data-rv-on] [data-rvs] { animation:rvScale linear both;animation-timeline:view();animation-range:entry 3% entry 85%;}
+    html[data-rv-on] [data-rv]  { animation:rvUp    linear both;animation-timeline:view();animation-range:entry 0% entry 100%;}
+    html[data-rv-on] [data-rvl] { animation:rvLeft  linear both;animation-timeline:view();animation-range:entry 0% entry 100%;}
+    html[data-rv-on] [data-rvs] { animation:rvScale linear both;animation-timeline:view();animation-range:entry 0% entry 100%;}
   }
   @supports (animation-timeline: scroll()) {
     [data-progress]{animation:rvGrow     linear both;animation-timeline:scroll(root);transform-origin:0 50%;}
