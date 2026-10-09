@@ -139,6 +139,20 @@
     .hero-badge--br{bottom:14px!important;right:14px!important;}
     .hero-pill{display:none!important;}
   }
+  /* ── Cookie-Banner ── */
+  #cookie-banner{position:fixed;left:0;right:0;bottom:0;z-index:200;background:#15130F;color:#cfc8bd;padding:22px 28px;box-shadow:0 -12px 40px -12px rgba(0,0,0,.4);transform:translateY(100%);transition:transform .45s cubic-bezier(.22,.8,.3,1);}
+  #cookie-banner.visible{transform:translateY(0);}
+  #cookie-banner .ck-inner{max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;}
+  #cookie-banner p{margin:0;font-size:13.5px;line-height:1.6;color:#cfc8bd;max-width:620px;}
+  #cookie-banner a{color:#fff;text-decoration:underline;}
+  #cookie-banner .ck-actions{display:flex;flex-wrap:wrap;gap:10px;flex-shrink:0;}
+  #cookie-banner button{font-family:'Hanken Grotesk',system-ui,sans-serif;font-size:13.5px;font-weight:600;border-radius:999px;padding:12px 20px;cursor:pointer;border:1px solid rgba(255,255,255,.18);background:transparent;color:#cfc8bd;white-space:nowrap;}
+  #cookie-banner button.ck-accept{background:#E05949;color:#fff;border-color:#E05949;}
+  @media(max-width:600px){
+    #cookie-banner{padding:20px;}
+    #cookie-banner .ck-actions{width:100%;}
+    #cookie-banner button{flex:1;}
+  }
 </style>
 </head>
 <body>
@@ -910,11 +924,22 @@
         <p style="font-size:12px;color:#7d7567;margin:0;">© 2026 Pelvic-One. Alle Rechte vorbehalten.</p>
         <a href="./impressum.html" style="font-size:12px;color:#9a938a;text-decoration:none;">Impressum</a>
         <a href="./datenschutz.html" style="font-size:12px;color:#9a938a;text-decoration:none;">Datenschutz</a>
+        <button type="button" id="cookie-settings-btn" style="font-size:12px;color:#9a938a;text-decoration:none;background:none;border:none;padding:0;cursor:pointer;font-family:inherit;">Cookie-Einstellungen</button>
       </div>
       <p style="font-size:11.5px;color:#6b6457;margin:0;max-width:560px;line-height:1.5;">Hinweis: Der Pelvic-One Magnetstuhl ist kein Heilmittel und ersetzt keine ärztliche Diagnose. Keine garantierten Ergebnisse. Studienreferenzen auf Anfrage.</p>
     </div>
   </div>
 </footer>
+
+<div id="cookie-banner" role="dialog" aria-label="Cookie-Hinweis" aria-live="polite">
+  <div class="ck-inner">
+    <p>Diese Website nutzt nur technisch notwendige Funktionen und bindet externe Schriftarten (Google Fonts) ein. Aktuell setzen wir keine Analyse- oder Marketing-Cookies ein – Ihre Auswahl wird lokal in Ihrem Browser gespeichert. Mehr dazu in unserer <a href="./datenschutz.html#cookies">Datenschutzerklärung</a>.</p>
+    <div class="ck-actions">
+      <button type="button" class="ck-necessary" id="cookie-necessary-btn">Nur notwendige</button>
+      <button type="button" class="ck-accept" id="cookie-accept-btn">Alle akzeptieren</button>
+    </div>
+  </div>
+</div>
 
 <script>
   (function() {
@@ -967,6 +992,50 @@
     left.forEach(function(el)  { if (!scaleSet.has(el)) el.setAttribute('data-rvl',''); });
     up.forEach(function(el)    { if (!scaleSet.has(el) && !leftSet.has(el)) el.setAttribute('data-rv',''); });
     document.documentElement.setAttribute('data-rv-on','');
+  })();
+
+  (function() {
+    var STORAGE_KEY = 'pelvicone-consent';
+    var banner = document.getElementById('cookie-banner');
+    var acceptBtn = document.getElementById('cookie-accept-btn');
+    var necessaryBtn = document.getElementById('cookie-necessary-btn');
+    var settingsBtn = document.getElementById('cookie-settings-btn');
+
+    function getConsent() {
+      try {
+        var raw = localStorage.getItem(STORAGE_KEY);
+        return raw ? JSON.parse(raw) : null;
+      } catch (e) { return null; }
+    }
+    function setConsent(statistics) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({ necessary: true, statistics: statistics, timestamp: Date.now() }));
+      } catch (e) {}
+    }
+    function showBanner() {
+      banner.classList.add('visible');
+    }
+    function hideBanner() {
+      banner.classList.remove('visible');
+    }
+
+    window.PelvicOneConsent = { get: getConsent };
+
+    if (!getConsent()) {
+      setTimeout(showBanner, 400);
+    }
+
+    acceptBtn.addEventListener('click', function() {
+      setConsent(true);
+      hideBanner();
+    });
+    necessaryBtn.addEventListener('click', function() {
+      setConsent(false);
+      hideBanner();
+    });
+    settingsBtn.addEventListener('click', function() {
+      showBanner();
+    });
   })();
 </script>
 </body>
